@@ -1,0 +1,231 @@
+#include "../../Framework/MCIPlayer.h"
+#include "Food.h"
+#include "../Square/Square.h"
+#include "../Player/Player.h"
+#include "../../HUD/HUD.h"
+#include "../../Framework/CollisionManager.h"
+
+Food::Food(SCENCE scene, int foodType, int posX, int posY) {
+	this->SetObjectType(FOOD);
+	this->SetPosition(posX, posY);
+	this->initialPosition.x = posX;
+	this->initialPosition.y = posY;
+	this->SetVeclocity(0.0f, 0.0f);
+	this->position.z = 0.0f;
+	this->isActive = true;
+	state = UNTOUCH;
+	this->sprite = new  map<FOOD_STATE, Sprite*>();
+
+	this->sprite
+		->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::DIGESTED,
+			new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_DEAD, 1, 0.0f)));
+
+	switch (scene)
+	{
+	case SCENCE::SCENCE_1:
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::UNTOUCH,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_UNTOUCH_BUTTERFLY, 2, 0.09f)));
+		break;
+	case SCENCE::SCENCE_2:
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::UNTOUCH,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_UNTOUCH_BIRD, 2, 0.09f)));
+		break;
+	default:
+		break;
+	}
+
+	switch (foodType)
+	{
+	case 0:
+		type = FOOD_TYPE::ITEM_POINT_BLUE;
+		score = 5;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_ITEM_POINT_BLUE, 1, 0.0f)));
+		break;
+	case 1:
+		type = FOOD_TYPE::ITEM_POINT_RED;
+		score = 10;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_ITEM_POINT_RED, 1, 0.0f)));
+		break;
+	case 2:
+		type = FOOD_TYPE::VASE_BLUE;
+		score = 500;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_VASE_BLUE, 1, 0.0f)));
+		break;
+	case 3:
+		type = FOOD_TYPE::VASE_RED;
+		score = 1000;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_VASE_RED, 1, 0.0f)));
+		break;
+	case 4:
+		type = FOOD_TYPE::TIMER;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_TIME, 1, 0.0f)));
+		break;
+	case 5:
+		type = FOOD_TYPE::FIRE;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_FIRE, 1, 0.0f)));
+		break;
+	case 6:
+		type = FOOD_TYPE::SHURIKEN_BLUE;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_SHURIKEN_BLUE, 1, 0.0f)));
+		break;
+	case 7:
+		type = FOOD_TYPE::SHURIKEN_RED;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_SHURIKEN_RED, 1, 0.0f)));
+		break;
+	case 8:
+		type = FOOD_TYPE::BLOOD;
+		score = 16;
+		this->sprite
+			->insert(pair<FOOD_STATE, Sprite*>(FOOD_STATE::TOUCHED,
+				new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_TEXTURE_MAP_1_FOOD_BLOOD, 1, 0.0f)));
+		break;
+	default:
+		break;
+	}
+}
+
+Food::~Food() {
+
+}
+
+bool Food::GetIsOnGround() {
+	return this->isOnGround;
+}
+
+void Food::SetIsOnGround(bool flag) {
+	this->isOnGround = flag;
+}
+
+FOOD_TYPE Food::GetType() {
+	return this->type;
+}
+
+int Food::GetScore() {
+	return this->score;
+}
+
+FOOD_STATE Food::GetState() {
+	return this->state;
+}
+
+void Food::Update(float t, vector<Object*>* objects) {
+	if (this->state == TOUCHED) {
+		if (!isOnGround) {
+			this->veclocity.y += GRAVITY * t;
+			Object::PlusPosition(this->deltaX, this->deltaY);
+		}
+		else {
+			if (timer >= TIME_DISAPPEAR) {
+				state = FOOD_STATE::DIGESTED;
+				timer = 0;
+			}
+			else {
+				timer += t;
+			}
+		}
+	}
+
+	Object::Update(t);
+	RECT rect = sprite->at(this->state)->GetBoudingBoxFromCurrentSprite();
+	Object::updateBoundingBox(rect);
+	sprite->at(this->state)->NextSprite(t);
+	HandleCollision(objects);
+}
+
+void Food::HandleCollision(vector<Object*> *object) {
+	vector<CollisionHandler*>* coEvents = new vector<CollisionHandler*>();
+	vector<CollisionHandler*>* coEventsResult = new vector<CollisionHandler*>();
+	coEvents->clear();
+	Object::CalcPotentialCollisions(object, coEvents);
+	if (coEvents->size() != 0) {
+		float min_tx, min_ty, nx = 0, ny;
+		this->FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+		for (UINT i = 0; i < coEventsResult->size(); i++) {
+			CollisionHandler* e = coEventsResult->at(i);
+			if (e->object->GetObjectType() == OBJECT_TYPE::SQUARE) {
+				this->SetVy(0.0f);
+				isOnGround = true;
+			}
+			else if (e->object->GetObjectType() == OBJECT_TYPE::MAIN_CHARACTER) {
+				if (PLAYER->GetState() == JUMP_ATK) {
+					if (state == UNTOUCH) {
+						this->state = TOUCHED;
+					}
+				}
+			}
+		}
+	}
+
+	if (this->state == UNTOUCH) {
+		if (COLLISION->AABB(PLAYER->GetKatana()->GetBoundingBox(), GetBoundingBox())) {
+			this->state = TOUCHED;
+		}
+		
+		if (PLAYER->GetWeapon()) {
+			if (PLAYER->GetWeapon()->GetObjectType() != CIRCLE_FIRE) {
+				if (COLLISION->AABB(PLAYER->GetWeapon()->GetBoundingBox(), GetBoundingBox())) {
+					this->state = TOUCHED;
+				}
+			}
+			else {
+				for (int i = 0; i < 3; i++) {
+					if (COLLISION->AABB(PLAYER->GetWeapon()[i].GetBoundingBox(), GetBoundingBox())) {
+						this->state = TOUCHED;
+						break;
+					}
+				}
+			}
+		}
+	}
+
+	if (COLLISION->AABB(PLAYER->GetBoundingBox(), GetBoundingBox())) {
+		if (this->state == TOUCHED) {
+			MCIPLAYER->Play(SOUND_DIGEST_FOOD);
+			PLAYER->DigestFood(this, sprite->at(FOOD_STATE::TOUCHED));
+			this->state = DIGESTED;
+		}
+	}
+
+	for (UINT i = 0; i < coEvents->size(); i++) {
+		delete coEvents->at(i);
+	}
+
+	delete coEvents;
+	delete coEventsResult;
+}
+
+void Food::Render() {
+	if (this->state != DIGESTED) {
+		sprite->at(this->state)->DrawSprite(Object::GetTransformObjectPositionByCamera(), true);
+	}
+}
+
+void Food::Reset() {
+	state = FOOD_STATE::UNTOUCH;
+	position = initialPosition;
+	isOnGround = false;
+}
+
+void Food::ResetState() {
+	if (PLAYER->GetState() == PLAYER_STATE::DIE) {
+		Reset();
+	}
+}
