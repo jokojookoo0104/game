@@ -1,8 +1,8 @@
 #include "MapLevel1Scence.h"
-#include "../Object/Enemy/SoldierSword.h"
+#include "../Object/Enemy/SwordMan.h"
 #include "../Logging/GameDebugDraw.h"
 #include "../HUD/HUD.h"
-#include "../Framework/World.h"
+#include "../Framework/NinjaGaidenScence.h"
 #include "../Framework/MCIPlayer.h"
 MapLevel1Scence::MapLevel1Scence(): Scence()
 {

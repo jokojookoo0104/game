@@ -9,13 +9,13 @@
 #include "../Object/Ladder/Ladder.h"
 #include "../Object/Ladder/Rock.h"
 #include "../Object/Square/Brick.h"
-#include "../Object/Enemy/SoldierSword.h"
+#include "../Object/Enemy/SwordMan.h"
 #include "../Object/Enemy/SoliderGun.h"
 #include "../Object/Enemy/SoliderRun.h"
 #include "../Object/Enemy/SoliderBazoka.h"
-#include "../Object/Enemy/Witch.h"
+#include "../Object/Enemy/Banshee.h"
 #include "../Object/Enemy/Panther.h"
-#include "../Object/Enemy/Eagle.h"
+#include "../Object/Enemy/Bird.h"
 #include "../Object/Enemy/Bat.h"
 #include "../Object/Square/Destination.h"
 #include <math.h> 
@@ -373,7 +373,7 @@ vector<Object*>* Grid::FilterObjects(OBJECT_TYPE type) {
 	vector<Object*>* temp = new vector<Object*>();
 	for (int i = 0; i < objects->size(); i++) {
 		if (objects->at(i)->GetObjectType() != type) {
-			if (type == OBJECT_TYPE::EAGLE) {
+			if (type == OBJECT_TYPE::BRID) {
 				temp->push_back(objects->at(0));
 				break;
 			}
@@ -454,11 +454,11 @@ void Grid::LoadObjects(LPCWSTR filePath) {
 			Object* object;
 			switch (TypeObject) {
 				case 1:
-					object = new SoldierSword(movingLimit, activeArea, positionX, positionY);
+					object = new SwordMan(movingLimit, activeArea, positionX, positionY);
 					Add(object);
 					break;
 				case 2:
-					object = new Witch(positionX, positionY, movingLimit, activeArea);
+					object = new Banshee(positionX, positionY, movingLimit, activeArea);
 					Add(object);
 					break;
 				case 3:
@@ -474,7 +474,7 @@ void Grid::LoadObjects(LPCWSTR filePath) {
 					Add(object);
 					break;
 				case 10:
-					object = new Eagle(activeArea, positionX, positionY);
+					object = new Brid(activeArea, positionX, positionY);
 					Add(object);
 					break;
 				case 11:

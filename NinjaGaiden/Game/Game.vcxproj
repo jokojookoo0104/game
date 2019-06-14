@@ -139,7 +139,7 @@
     <ClInclude Include="Framework\Constants.h" />
     <ClInclude Include="Logging\Debug.h" />
     <ClInclude Include="Object\Square\Destination.h" />
-    <ClInclude Include="Object\Enemy\Eagle.h" />
+    <ClInclude Include="Object\Enemy\Bird.h" />
     <ClInclude Include="Object\Items\Food.h" />
     <ClInclude Include="Framework\Game.h" />
     <ClInclude Include="Framework\GameAction.h" />
@@ -164,7 +164,7 @@
     <ClInclude Include="Scence\MapLevel2Scence.h" />
     <ClInclude Include="Scence\MapLevel3Scence.h" />
     <ClInclude Include="Object\Player\SmallShuriken.h" />
-    <ClInclude Include="Object\Enemy\SoldierSword.h" />
+    <ClInclude Include="Object\Enemy\SwordMan.h" />
     <ClInclude Include="Object\Enemy\SoliderBazoka.h" />
     <ClInclude Include="Object\Enemy\SoliderGun.h" />
     <ClInclude Include="Object\Enemy\SoliderRun.h" />
@@ -173,9 +173,9 @@
     <ClInclude Include="HUD\Text.h" />
     <ClInclude Include="Framework\Texture.h" />
     <ClInclude Include="Object\Player\Weapon.h" />
-    <ClInclude Include="Object\Enemy\Witch.h" />
-    <ClInclude Include="Object\Enemy\WitchSword.h" />
-    <ClInclude Include="Framework\World.h" />
+    <ClInclude Include="Object\Enemy\Banshee.h" />
+    <ClInclude Include="Object\Enemy\BansheeSword.h" />
+    <ClInclude Include="Framework\NinjaGaidenScence.h" />
     <ClInclude Include="Object\Square\StaticObject.h" />
   </ItemGroup>
   <ItemGroup>
@@ -191,7 +191,7 @@
     <ClCompile Include="Object\Player\CircleFire.cpp" />
     <ClCompile Include="Logging\Debug.cpp" />
     <ClCompile Include="Object\Square\Destination.cpp" />
-    <ClCompile Include="Object\Enemy\Eagle.cpp" />
+    <ClCompile Include="Object\Enemy\Bird.cpp" />
     <ClCompile Include="Object\Items\Food.cpp" />
     <ClCompile Include="Framework\Game.cpp" />
     <ClCompile Include="Framework\GameAction.cpp" />
@@ -215,7 +215,7 @@
     <ClCompile Include="Scence\MapLevel2Scence.cpp" />
     <ClCompile Include="Scence\MapLevel3Scence.cpp" />
     <ClCompile Include="Object\Player\SmallShuriken.cpp" />
-    <ClCompile Include="Object\Enemy\SoldierSword.cpp" />
+    <ClCompile Include="Object\Enemy\SwordMan.cpp" />
     <ClCompile Include="Object\Enemy\SoliderBazoka.cpp" />
     <ClCompile Include="Object\Enemy\SoliderGun.cpp" />
     <ClCompile Include="Object\Enemy\SoliderRun.cpp" />
@@ -225,9 +225,9 @@
     <ClCompile Include="Object\Square\Square.cpp" />
     <ClCompile Include="HUD\Text.cpp" />
     <ClCompile Include="Framework\Texture.cpp" />
-    <ClCompile Include="Object\Enemy\Witch.cpp" />
-    <ClCompile Include="Object\Enemy\WitchSword.cpp" />
-    <ClCompile Include="Framework\World.cpp" />
+    <ClCompile Include="Object\Enemy\Banshee.cpp" />
+    <ClCompile Include="Object\Enemy\BansheeSword.cpp" />
+    <ClCompile Include="Framework\NinjaGaidenScence.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 #pragma once
 #include "Game.h"
-#include "World.h"
+#include "NinjaGaidenScence.h"
 #include "Graphic.h"
 #include "../Object/Player/Player.h"
 #include "Camera.h"

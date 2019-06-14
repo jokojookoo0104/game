@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="FrameWork">
       <UniqueIdentifier>{2d27bd0a-aad0-4510-8a31-27b060c48c72}</UniqueIdentifier>
     </Filter>
@@ -68,6 +64,9 @@
     <Filter Include="Map">
       <UniqueIdentifier>{8984a590-2376-4905-b871-45b7e332029f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Weapon">
+      <UniqueIdentifier>{c277d020-7988-49bb-a992-262cb7a5b1a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Game.h">
@@ -79,9 +78,6 @@
     <ClInclude Include="HUD\Text.h">
       <Filter>HUD\Text</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Constants.h">
-      <Filter>FrameWork</Filter>
-    </ClInclude>
     <ClInclude Include="Logging\Debug.h">
       <Filter>Logging</Filter>
     </ClInclude>
@@ -90,21 +86,6 @@
     </ClInclude>
     <ClInclude Include="Object\Boss\Boom.h">
       <Filter>Object\Boss</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Player\BigShuriken.h">
-      <Filter>Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Player\CircleFire.h">
-      <Filter>Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Player\Katana.h">
-      <Filter>Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Player\SmallShuriken.h">
-      <Filter>Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Player\Weapon.h">
-      <Filter>Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="Object\Items\Food.h">
       <Filter>Object\Items</Filter>
@@ -115,13 +96,7 @@
     <ClInclude Include="Object\Enemy\Bullet.h">
       <Filter>Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Object\Enemy\Eagle.h">
-      <Filter>Object\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Object\Enemy\Panther.h">
-      <Filter>Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Enemy\SoldierSword.h">
       <Filter>Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Object\Enemy\SoliderBazoka.h">
@@ -131,12 +106,6 @@
       <Filter>Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Object\Enemy\SoliderRun.h">
-      <Filter>Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Enemy\Witch.h">
-      <Filter>Object\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Object\Enemy\WitchSword.h">
       <Filter>Object\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Object\Square\Brick.h">
@@ -202,9 +171,6 @@
     <ClInclude Include="Framework\Object.h">
       <Filter>Object</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\World.h">
-      <Filter>Scence</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\GameAction.h">
       <Filter>Scence</Filter>
     </ClInclude>
@@ -232,8 +198,39 @@
     <ClInclude Include="Object\Player\Player.h">
       <Filter>Object\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\NinjaGaidenScence.h">
+      <Filter>Scence</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Enemy\Banshee.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Enemy\BansheeSword.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Enemy\SwordMan.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Enemy\Bird.h">
+      <Filter>Object\Enemy</Filter>
+    </ClInclude>
     <ClInclude Include="Framework\Label.h">
-      <Filter>FrameWork</Filter>
+      <Filter>FrameWork\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Constants.h" />
+    <ClInclude Include="Object\Player\Weapon.h">
+      <Filter>Object\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player\SmallShuriken.h">
+      <Filter>Object\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player\Katana.h">
+      <Filter>Object\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player\CircleFire.h">
+      <Filter>Object\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="Object\Player\BigShuriken.h">
+      <Filter>Object\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -249,9 +246,6 @@
     <ClCompile Include="Logging\GameDebugDraw.cpp">
       <Filter>Logging</Filter>
     </ClCompile>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Scence.cpp">
       <Filter>Scence</Filter>
     </ClCompile>
@@ -261,13 +255,7 @@
     <ClCompile Include="Object\Enemy\Bat.cpp">
       <Filter>Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Object\Enemy\Eagle.cpp">
-      <Filter>Object\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Object\Enemy\Panther.cpp">
-      <Filter>Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Enemy\SoldierSword.cpp">
       <Filter>Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Object\Enemy\SoliderBazoka.cpp">
@@ -277,12 +265,6 @@
       <Filter>Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Object\Enemy\SoliderRun.cpp">
-      <Filter>Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Enemy\Witch.cpp">
-      <Filter>Object\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Enemy\WitchSword.cpp">
       <Filter>Object\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Object\Boss\Boom.cpp">
@@ -299,18 +281,6 @@
     </ClCompile>
     <ClCompile Include="Object\Ladder\Rock.cpp">
       <Filter>Object\Ladder</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Player\BigShuriken.cpp">
-      <Filter>Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Player\CircleFire.cpp">
-      <Filter>Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Player\Katana.cpp">
-      <Filter>Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Object\Player\SmallShuriken.cpp">
-      <Filter>Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="Object\Square\Destination.cpp">
       <Filter>Object\Square</Filter>
@@ -378,11 +348,36 @@
     <ClCompile Include="Scence\MapLevel3Scence.cpp">
       <Filter>Scence</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\World.cpp">
-      <Filter>Scence</Filter>
-    </ClCompile>
     <ClCompile Include="Object\Player\Player.cpp">
       <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\NinjaGaidenScence.cpp">
+      <Filter>Scence</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Enemy\Banshee.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Enemy\BansheeSword.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Enemy\SwordMan.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Enemy\Bird.cpp">
+      <Filter>Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Object\Player\SmallShuriken.cpp">
+      <Filter>Object\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Player\Katana.cpp">
+      <Filter>Object\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Player\CircleFire.cpp">
+      <Filter>Object\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="Object\Player\BigShuriken.cpp">
+      <Filter>Object\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

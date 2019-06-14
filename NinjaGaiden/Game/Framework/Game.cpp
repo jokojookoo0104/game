@@ -71,7 +71,7 @@ void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top,
 	D3DXMatrixTransformation(&mat, &D3DXVECTOR3(width / 2, height / 2, 0), NULL, &scaling, &spriteCentre, NULL, &p);
 	spriteHandler->SetTransform(&mat);
 	spriteHandler->Draw(texture, &r,NULL, NULL, D3DCOLOR_ARGB(alpha, 255, 255, 255));
-}
+}	
 
 void Game::Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, D3DCOLOR color)
 {

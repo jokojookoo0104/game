@@ -16,42 +16,9 @@
 #define TEXT Text::GetInstance()
 #define CAMERA Camera::GetInstance()
 #define HUD Hud::GetInstance()
-#define WORLD World::GetInstance()
+#define WORLD NinjaGaidenScence::GetInstance()
 
-// ========= SOUND PATH
-#define SOUND_TRACK_PATH_MAP_1	"sound//STAGE1.mp3"
-#define SOUND_TRACK_PATH_MAP_2	"sound//STAGE2.mp3"
-#define SOUND_TRACK_PATH_MAP_3	"sound//STAGE3.mid"
-#define SOUND_TRACK_PATH_GAMEOVER "sound//GAMEOVER.mp3"
-#define SOUND_PATH_EFFECT_ATK					"sound///effects/22.wav"
-#define SOUND_PATH_EFFECT_ATK_SMALL_SHURIKEN	"sound//effects//10.wav"
-#define SOUND_PATH_EFFECT_ATK_BIG_SHURIKEN		"sound//effects//11.wav"
-#define SOUND_PATH_EFFECT_ATK_FIRE				"sound//effects//12.wav"
-#define SOUND_PATH_EFFECT_JUMP					"sound//effects//02.wav"
-#define SOUND_PATH_EFFECT_WOUNDED				"sound//effects//04.wav"
-#define SOUND_PATH_EFFECT_DIGEST_FOOD			"sound//effects//06.wav"
-#define SOUND_PATH_EFFECT_ENEMY_DIE				"sound//effects//05.wav"
-#define SOUND_PATH_EFFECT_ENEMY_GUN				"sound//effects//18.wav"
-#define SOUND_PATH_EFFECT_ENEMY_BAZOKA			"sound//effects//19.wav"
-#define SOUND_PATH_EFFECT_BOSS_EXPLOSION		"sound//effects//31.wav"
-#define SOUND_PATH_EFFECT_BOSS_JUMP				"sound//effects//32.wav"
-// ========= SOUND NAME
-#define SOUND_TRACK_MAP1			"sound_track_map1"
-#define SOUND_TRACK_MAP2			"sound_track_map2"
-#define SOUND_TRACK_MAP3			"sound_track_map3"
-#define SOUND_TRACK_GAMEOVER		"sound_track_gameover"
-#define SOUND_ATK					"atk"
-#define SOUND_ATK_SMALL_SHURIKEN	"atk_small_shuriken"
-#define SOUND_ATK_BIG_SHURIKEN		"atk_big_shuriken"
-#define SOUND_ATK_FIRE				"atk_fire"
-#define SOUND_JUMP					"jump"
-#define SOUND_WOUNDED				"jump"
-#define SOUND_DIGEST_FOOD			"digest_food"
-#define SOUND_ENEMY_DIE				"enemy_die"
-#define SOUND_ENEMY_GUN				"enemy_gun"
-#define SOUND_ENEMY_BAZOKA			"enemy_bazoka"
-#define SOUND_BOSS_EXPLOSION		"boss_explosion"
-#define SOUND_BOSS_JUMP				"boss_jump"
+
 // =========== HUD
 #define HEALTH_ID 50
 #define HEALTH L"resource\\HUD\\health.PNG"
@@ -158,9 +125,9 @@
 #define PATH_TEXTURE_MAP_1_FOOD_SHURIKEN_RED L"resource\\food\\food_shuriken_red.txt"
 #define PATH_TEXTURE_MAP_1_FOOD_BLOOD L"resource\\food\\food_blood.txt"
 //=========== Phù thủy
-#define PATH_TEXTURE_MAP_1_ENEMY_WITCH_FOLLOW L"resource\\enemy\\Witch\\follow.txt"
-#define PATH_TEXTURE_MAP_1_ENEMY_WITCH_ATK L"resource\\enemy\\Witch\\atk.txt"
-#define PATH_TEXTURE_MAP_1_ENEMY_WITCH_SWORD L"resource\\enemy\\Witch\\sword.txt"
+#define PATH_TEXTURE_MAP_1_ENEMY_BANSHEE_FOLLOW L"resource\\enemy\\Banshee\\follow.txt"
+#define PATH_TEXTURE_MAP_1_ENEMY_BANSHEE_ATK L"resource\\enemy\\Banshee\\atk.txt"
+#define PATH_TEXTURE_MAP_1_ENEMY_BANSHEE_SWORD L"resource\\enemy\\Banshee\\sword.txt"
 //=========== Lính cầm súng
 #define PATH_TEXTURE_MAP_1_ENEMY_SOLIDER_GUN_FOLLOW L"resource\\enemy\\SoliderGun\\follow.txt"
 #define PATH_TEXTURE_MAP_1_ENEMY_SOLIDER_GUN_ATK L"resource\\enemy\\SoliderGun\\atk.txt"
@@ -169,19 +136,53 @@
 #define PATH_TEXTURE_MAP_1_ENEMY_SOLIDER_BAZOKA_DO_NOT_THING L"resource\\enemy\\SoliderBazoka\\do_not_thing.txt"
 #define PATH_TEXTURE_MAP_1_ENEMY_SOLIDER_BAZOKA_ATK L"resource\\enemy\\SoliderBazoka\\atk.txt"
 #define PATH_TEXTURE_MAP_1_ENEMY_SOLIDER_BAZOKA_BULLET L"resource\\enemy\\SoliderBazoka\\bullet.txt"
+// ========= SOUND PATH
+#define SOUND_TRACK_PATH_MAP_1	"sound//STAGE1.mp3"
+#define SOUND_TRACK_PATH_MAP_2	"sound//STAGE2.mp3"
+#define SOUND_TRACK_PATH_MAP_3	"sound//STAGE3.mid"
+#define SOUND_TRACK_PATH_GAMEOVER "sound//GAMEOVER.mp3"
+#define SOUND_PATH_EFFECT_ATK					"sound///effects/22.wav"
+#define SOUND_PATH_EFFECT_ATK_SMALL_SHURIKEN	"sound//effects//10.wav"
+#define SOUND_PATH_EFFECT_ATK_BIG_SHURIKEN		"sound//effects//11.wav"
+#define SOUND_PATH_EFFECT_ATK_FIRE				"sound//effects//12.wav"
+#define SOUND_PATH_EFFECT_JUMP					"sound//effects//02.wav"
+#define SOUND_PATH_EFFECT_WOUNDED				"sound//effects//04.wav"
+#define SOUND_PATH_EFFECT_DIGEST_FOOD			"sound//effects//06.wav"
+#define SOUND_PATH_EFFECT_ENEMY_DIE				"sound//effects//05.wav"
+#define SOUND_PATH_EFFECT_ENEMY_GUN				"sound//effects//18.wav"
+#define SOUND_PATH_EFFECT_ENEMY_BAZOKA			"sound//effects//19.wav"
+#define SOUND_PATH_EFFECT_BOSS_EXPLOSION		"sound//effects//31.wav"
+#define SOUND_PATH_EFFECT_BOSS_JUMP				"sound//effects//32.wav"
+// ========= SOUND NAME
+#define SOUND_TRACK_MAP1			"sound_track_map1"
+#define SOUND_TRACK_MAP2			"sound_track_map2"
+#define SOUND_TRACK_MAP3			"sound_track_map3"
+#define SOUND_TRACK_GAMEOVER		"sound_track_gameover"
+#define SOUND_ATK					"atk"
+#define SOUND_ATK_SMALL_SHURIKEN	"atk_small_shuriken"
+#define SOUND_ATK_BIG_SHURIKEN		"atk_big_shuriken"
+#define SOUND_ATK_FIRE				"atk_fire"
+#define SOUND_JUMP					"jump"
+#define SOUND_WOUNDED				"jump"
+#define SOUND_DIGEST_FOOD			"digest_food"
+#define SOUND_ENEMY_DIE				"enemy_die"
+#define SOUND_ENEMY_GUN				"enemy_gun"
+#define SOUND_ENEMY_BAZOKA			"enemy_bazoka"
+#define SOUND_BOSS_EXPLOSION		"boss_explosion"
+#define SOUND_BOSS_JUMP				"boss_jump"
 //=========== other
 enum OBJECT_TYPE {
 	SQUARE,
 	MAIN_CHARACTER,
-	SOLDIER_SWORD,
+	SWORDMAN,
 	PANTHER,
 	SMALL_SHURIKEN,
 	BIG_SHURIKEN,
 	CIRCLE_FIRE,
 	BOSS, 
 	BOOM_BOSS,
-	WITCH,
-	WITCH_SWORD,
+	BANSHEE,
+	BANSHEESWORD,
 	SOLIDER_GUN,
 	BULLET,
 	SOLIDER_BAZOKA,
@@ -190,7 +191,7 @@ enum OBJECT_TYPE {
 	LADDER,
 	ROCK,
 	BRICK,
-	EAGLE,
+	BRID,
 	BAT,
 	DESTINATION
 };

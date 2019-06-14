@@ -11,7 +11,7 @@ GameAction::GameAction(HINSTANCE hInstance, int nShowCmd)
 	game->Init(graphic->GetHWnd());
 	this->keyHandler = new KeyboardHandler();
 	game->InitKeyboard(this->keyHandler);
-	World *world = WORLD;
+	NinjaGaidenScence *world = WORLD;
 	world->LoadResource();
 	GameTime* gameTime = GAMETIME;
 }

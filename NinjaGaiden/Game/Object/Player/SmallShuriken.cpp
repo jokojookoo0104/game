@@ -1,6 +1,6 @@
 #include "SmallShuriken.h"
 #include "../../Framework/Camera.h"
-#include "../Enemy/SoldierSword.h"
+#include "../Enemy/SwordMan.h"
 #include "../Enemy/Panther.h"
 
 SmallShuriken::SmallShuriken() {
@@ -59,8 +59,8 @@ void SmallShuriken::HandleCollision(vector<Object*> *object) {
 		for (UINT i = 0; i < coEventsResult->size(); i++) {
 			CollisionHandler* e = coEventsResult->at(i);
 			if (e->object->GetActive()) {
-				if (e->object->GetObjectType() == OBJECT_TYPE::SOLDIER_SWORD) {
-					SoldierSword *enemy = dynamic_cast<SoldierSword *>(e->object);
+				if (e->object->GetObjectType() == OBJECT_TYPE::SWORDMAN) {
+					SwordMan *enemy = dynamic_cast<SwordMan *>(e->object);
 					if (e->nx != 0) {
 						enemy->SetState(ENEMY_STATE::DEAD);
 						this->isActive = false;

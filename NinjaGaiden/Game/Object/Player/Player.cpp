@@ -2,7 +2,7 @@
 #include "../../Framework/Camera.h"
 #include "../../Framework/MCIPlayer.h"
 #include "../Square/Square.h"
-#include "../Enemy/SoldierSword.h"
+#include "../Enemy/SwordMan.h"
 #include "BigShuriken.h"
 #include <iomanip> 
 #include "../Boss/Boss.h"
@@ -61,7 +61,7 @@ Player::Player()
 			new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_POS_STAND_ATK, 3, 0.07f)));
 	this->sprite
 		->insert(pair<PLAYER_STATE, Sprite*>(PLAYER_STATE::JUMP,
-			new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_POS_JUMP, 4, 0.075f)));
+			new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_POS_JUMP, 4, 0.035f)));
 	this->sprite
 		->insert(pair<PLAYER_STATE, Sprite*>(PLAYER_STATE::WOUNDED,
 			new Sprite(TEXTURE->Get(ID_TEXTURE_MAIN), PATH_POS_WOUNDED, 1, 0.0f)));
@@ -541,15 +541,15 @@ void Player::HandleCollision(vector<Object*> *object) {
 					continue;
 				}
 			}
-			if (e->object->GetObjectType() == OBJECT_TYPE::SOLDIER_SWORD
+			if (e->object->GetObjectType() == OBJECT_TYPE::SWORDMAN
 				|| e->object->GetObjectType() == OBJECT_TYPE::PANTHER
-				|| e->object->GetObjectType() == OBJECT_TYPE::WITCH
+				|| e->object->GetObjectType() == OBJECT_TYPE::BANSHEE
 				|| e->object->GetObjectType() == OBJECT_TYPE::SOLIDER_GUN
 				|| e->object->GetObjectType() == OBJECT_TYPE::SOLIDER_BAZOKA
 				|| e->object->GetObjectType() == OBJECT_TYPE::BOSS
 				|| e->object->GetObjectType() == OBJECT_TYPE::SOLIDER_RUN
 				|| e->object->GetObjectType() == OBJECT_TYPE::BAT
-				|| e->object->GetObjectType() == OBJECT_TYPE::EAGLE) {
+				|| e->object->GetObjectType() == OBJECT_TYPE::BRID) {
 
 				if (isWounded) {
 					if (e->nx != 0) {

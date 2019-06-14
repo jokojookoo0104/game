@@ -1,6 +1,6 @@
 #include "MapLevel2Scence.h"
 #include "../HUD/HUD.h"
-#include "../Framework/World.h"
+#include "../Framework/NinjaGaidenScence.h"
 MapLevel2Scence::MapLevel2Scence() : Scence()
 {
 	this->LoadResource();
